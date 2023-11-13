@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .order_btn_1 {
+            background: #fac031;
+            text-decoration: none; 
+            padding: 12px 40px;
+            margin-top: 100px;
+            margin-right: 100px;
+            color: #fff;
+            bottom: 30px;
+        }
+        .order_btn_2 {
+            background: #fac031;
+            text-decoration: none;
+            padding: 12px 22px;
+            margin-top: 100px;
+            margin-left: -800px;
+            color: #fff;
+            bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+        
+    <div class="order" id="Order">
+
+        <h1><span>Order</span>Now</h1>
+        <div class="order_main">  
+            <a href="/pesan/delivered/addandbuy?meal={{ data[0] }}&harga={{ data[1] }}" class="order_btn_1">Dine In</a>
+            <a href="/pesan/delivered?nama={{ data[0] }}&harga={{ data[1] }}" class="order_btn_2">Take Away</a>
+       </div>
+
+    </div>
+
+</body>
+</html>

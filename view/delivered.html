@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+        <!--Order-->
+        
+    <div class="order" id="Order">
+        <h1><span>Order</span>Now</h1>
+
+        <div class="order_main">
+
+            <div class="order_image">
+                <img src="{{ url_for ('static', filename='image/order_image.png') }}" alt="image order">
+            </div>
+
+            <form action="#">
+
+                <div class="input">
+                    <p>Name</p>
+                    <input type="text" id="name" placeholder="you name">
+                </div>
+
+                <div class="input">
+                    <p>Email</p>
+                    <input type="email" id="email" placeholder="you email">
+                </div>
+
+                <div class="input">
+                    <p>Number</p>
+                    <input type="number" id="nohp" placeholder="you number">
+                </div>
+
+                <div class="input">
+                    <p>Address</p>
+                    <input type="text" id="address" placeholder="you Address">
+                </div>
+
+                <a  id="order_btn" class="order_btn">Order Now</a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("order_btn").addEventListener("click", function() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var number = document.getElementById("nohp").value;
+            var address = document.getElementById("address").value;
+
+            var url = "/pesan/delivered/addandbuy?meal={{ data[0]}}&harga={{ data[1] }}&name="+name+"&email="+email+"&number="+number+"&address="+address;
+
+            window.location.href = url;
+        })
+    </script>
+</body>
+</html>

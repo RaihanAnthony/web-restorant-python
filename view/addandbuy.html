@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUY</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='style.css')}}">
+</head>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu {
+            margin-top: -80px;
+        }
+
+        .menu h1 span {
+            margin-right: 50px;
+        }
+
+        #continer-left {
+            width: 75%;
+            margin-left: 50px;
+            height: 80vh;
+        }
+
+        .menu .menu_box{
+            width: 95%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 15px;
+        }
+        
+        .menu .menu_box .menu_card{
+            width: 240px;
+            height: 360px;
+            padding-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .menu .menu_box .menu_card .menu_image{
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .menu .menu_box .menu_card .menu_info .menu_btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            background: #000;
+            padding: 5px 12px;
+            margin: 0 40px;
+            transition: 0.3s;
+        }
+
+        .container-right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 25%;
+            background-color: #fac031;
+            height: 200vh;
+            transition: 0.5s;
+        }
+
+        .container-right h1 {
+            color: whitesmoke;
+            font-weight: 100;
+            margin: 0;
+            padding: 0 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container-right .checkOut {
+            position: sticky;
+            bottom: 0;
+            width: 365px;
+            margin-top: 80vh;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: #fac031;
+        }
+
+        .container-right .checkOut .left .right{
+            color: whitesmoke;
+            border-right: 20px;
+            height: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 5px solid #fac031;
+        }
+
+        
+        
+        .left {
+            background-color: tomato;
+            font-weight: bold;
+            cursor: pointer;
+            color: whitesmoke;
+            border: 0px;
+            text-align: center;
+            line-height: 8vh;
+            height: 8.65vh;
+        }
+
+        .right {
+            color: whitesmoke;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: rgb(8, 227, 8);
+            border: 0px;
+            text-align: center;
+            line-height: 8vh;
+            height: 8.65vh;
+        }
+
+        .listCard li{
+            display: grid;
+            grid-template-columns: 200px repeat(3, 1fr);
+            color: #fff;
+            row-gap: 100px;
+            margin-left: 6px;
+        }
+        .listCard li div{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        .listCard li img{
+            width: 90%;
+        }
+        .listCard li button{
+            background-color: #fff5;
+            border: none;
+        }
+        .listCard .count{
+            margin: 0 10px;
+        }
+
+        .card-right {
+            display: flex;
+            justify-content: end;
+            margin-left: 25px;
+            align-items: end;
+        }
+    </style>
+
+<body>
+        
+    <!--Menu-->
+    <div class="continer-left" id="continer-left">
+        <div class="menu" id="Menu">
+            <h1>Pesan<span>Makanan</span></h1>
+            <div class="menu_box">
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img id="menu_image" src="{{ url_for ('static', filename='image/steak.png') }}" alt="image steak">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2 id="menuTitle">{{ data[0][0] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3 id="menuPrice">{{ data[1][0] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a class="menu_btn" onclick="addToCard(0, '{{data[0][0]}}', '{{data[1][0]}}')">Order Now</a>
+                    </div>
+
+                </div> 
+                
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img id="menu_image" src="{{ url_for ('static', filename='image/pasta1.jpg') }}" alt="image pasta">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][1]  }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][1]  }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(1, '{{data[0][1]}}', '{{data[1][1]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/burger.png') }}" alt="image burger">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][2]  }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][2] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(2, '{{data[0][2]}}', '{{data[1][2]}}')"  class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/toast.jpg') }}" alt="image toast">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][3] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][3]  }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(3, '{{data[0][3]}}', '{{data[1][3]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/lychee-tea.jpg') }}" alt="image lychee-tea">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][4]  }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][4] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(4, '{{data[0][4]}}', '{{data[1][4]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/ice-caramel.jpg') }}" alt="image ice-caramel">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][5] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][5] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(5, '{{data[0][5]}}', '{{data[1][5]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/green-tea.jpg') }}" alt="image green-tea">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][6] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][6] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(6, '{{data[0][6]}}', '{{data[1][6]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/matcha-tea.jpg') }}" alt="image matcha-tea">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][7] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][7] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(7, '{{data[0][7]}}', '{{data[1][7]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/pancake.png') }}" alt="image pancake">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][8] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][8] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(8, '{{data[0][8]}}', '{{data[1][8]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/choco-plan.jpg') }}" alt="image choco-plan">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][9] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][9] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(9, '{{data[0][9]}}', '{{data[1][9]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/apple-pie.png') }}" alt="image apple-pie">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][10] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][10] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(10, '{{data[0][10]}}', '{{data[1][10]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/cheesecake.png') }}" alt="image cheesecake">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][11] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][11] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(11, '{{data[0][11]}}', '{{data[1][11]}}')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+        </div>
+        </div>            
+    </div>
+
+    <div class="container-right" id="container-right">
+        <h1>Cart</h1>
+        <ul class="listCard"></ul>
+        <div class="checkOut">
+            <div class="left">
+                <div class="total">0</div>
+            </div>
+            <div class="right">
+                <button onclick="sendToServer()" class="bayar">Bayar</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    let orderCount = 0;
+    let listCards = {};
+    let listCard = document.querySelector('.listCard');
+    let total = document.querySelector('.total');
+    
+
+
+    function addToCard(key, nama, harga) {
+    // Ensure that key is a valid integer
+    console.log('debug key:', key)
+    if (Number.isInteger(key) && key >= 0) {
+        if (listCards[key] == null) {
+            Konharga = parseInt(harga)
+            listCards[key] = { name: nama, price: Konharga, quantity: 1, totalPerItem: Konharga };
+            reloadCard()
+        } else {
+            // If the key is already in listCards, increment the quantity
+            listCards[key].quantity++;
+            listCards[key].totalPerItem = listCards[key].price * listCards[key].quantity;
+            reloadCard()
+        }
+    } else {
+        console.error('Invalid key for products array.');
+    }
+}
+
+
+    function reloadCard() {
+        listCard.innerHTML = '';
+        let count = 0;
+        let totalPrice = 0;
+
+        Object.values(listCards).forEach((value, key) => {
+            totalPrice = totalPrice + value.price * value.quantity;
+            
+            if (value != null) {
+                let newDiv = document.createElement('li');
+                newDiv.innerHTML = `
+                    <div>${value.name}</div>
+                    <div>${value.totalPerItem.toLocaleString()}</div>
+                    <div class="card-right">
+                        <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                        <div class="count">${value.quantity}</div>
+                        <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                    </div>`;
+                listCard.appendChild(newDiv);
+            }
+        });
+
+        console.log(listCards);
+        total.innerText = totalPrice.toLocaleString();
+    }
+
+    function changeQuantity(key, quantity) {
+        if (quantity == 0) {
+            delete listCards[key];
+        } else {
+            listCards[key].quantity = quantity;
+            listCards[key].totalPerItem = quantity * listCards[key].price;
+        }
+        reloadCard();
+    }
+
+    function sendToServer() {
+        const url = '/pesan/delivered/addandbuy'
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(listCards),
+        })
+        .then(Response => Response.json())
+        .then(result => {
+            console.log('berhasil:', result);
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Error: ', error)
+        });
+    }
+    </script>
+</body>
+</html>

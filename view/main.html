@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Website</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <section id="Home">
+        <nav>
+            <div class="brand">
+                <h1>Meat Guy Brother</h1>
+            </div>
+
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Menu">Menu</a></li>
+                <li><a href="#Gallary">Gallary</a></li>
+                <li><a href="#Review">Review</a></li>
+                <li><a href="#Order">Order</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="main">
+
+            <div class="men_text">
+                <h1>Get Fresh<span>Food</span><br>in a Easy Way</h1>
+            </div>
+
+            <div class="main_image">
+                <img src="{{ url_for('static', filename='image/main_img.png') }}" alt="main image">
+            </div>
+
+        </div>
+
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse reiciendis quaerat nobis 
+            deleniti amet non inventore. Reprehenderit recusandae voluptatibus minus tenetur itaque numquam 
+            cum quos dolorem maxime. Quas, quaerat nisi. Lorem ipsum dolor sit, amet consectetur adipisicing 
+            elit. Cumque facilis, quaerat cupiditate nulla quibusdam quo sunt esse tempore inventore vel 
+            voluptate, amet laudantium adipisci veniam nihil quam molestiae omnis mollitia.
+        </p>
+
+        <div class="main_btn">
+            <a href="#Menu">Order Now</a>
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
+
+    </section>
+
+
+
+    <!--About-->
+
+    <div class="about" id="About">
+        <div class="about_main">
+
+            <div class="image">
+                <img src="{{ url_for('static', filename='image/Food-Plate.png') }}" alt="image-about">
+            </div>
+
+            <div class="about_text">
+                <h1><span>About</span>Us</h1>
+                <h3>Why Choose us?</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, est. Doloremque 
+                    sapiente veritatis laboriosam corrupti optio et maxime. Ad, amet explicabo eaque labore 
+                    cupiditate quasi nostrum nemo recusandae id quibusdam? Lorem ipsum dolor sit amet 
+                    consectetur adipisicing elit. Doloremque ab, dolores pariatur cum exercitationem, illo nisi 
+                    veritatis vitae ea deleniti fugiat quisquam tempora, accusantium corrupti excepturi optio. 
+                    Inventore, cupiditate recusandae.
+                </p>
+            </div>
+
+        </div>
+
+        <a href="#Menu" class="about_btn">Order Now</a>
+
+    </div>
+
+
+
+    <!--Menu-->
+
+    <div class="menu" id="Menu">
+        <h1>Our<span>Menu</span></h1>
+
+        <div class="menu_box">
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/steak.png') }}" alt="image steak">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][0] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][0] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+            
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/pasta1.jpg') }}" alt="image pasta">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][1]  }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][1]  }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/burger.png') }}" alt="image burger">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][2]  }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][2] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/toast.jpg') }}" alt="image toast">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][3] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][3]  }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/lychee-tea.jpg') }}" alt="image lychee-tea">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][4]  }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][4] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/ice-caramel.jpg') }}" alt="image ice-caramel">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][5] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][5] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/green-tea.jpg') }}" alt="image green-tea">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][6] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][6] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/matcha-tea.jpg') }}" alt="image matcha-tea">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][7] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][7] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/pancake.png') }}" alt="image pancake">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][8] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][8] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/choco-plan.jpg') }}" alt="image choco-plan">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][9] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][9] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/apple-pie.png') }}" alt="image apple-pie">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][10] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][10] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{{ url_for ('static', filename='image/cheesecake.png') }}" alt="image cheesecake">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>{{ data[0][11] }}</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>{{ data[1][11] }}</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="/pesan" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+            
+        </div>
+
+    </div>
+
+
+
+
+    <!--Gallary-->
+
+    <div class="gallary" id="Gallary">
+        <h1>Our<span>Gallary</span></h1>
+
+        <div class="gallary_image_box">
+            <div class="gallary_image">
+                <img src="{{ url_for ('static', filename='image/gallary_1.jpg') }}">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+             
+            </div>
+
+            <div class="gallary_image">
+                <img src="{{ url_for ('static', filename='image/gallary_2.jpg') }}">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+            
+            </div>
+
+            <div class="gallary_image">
+                <img src="{{ url_for ('static', filename='image/gallary_3.jpg') }}">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+            
+            </div>
+
+            <div class="gallary_image">
+                <img src="{{ url_for ('static', filename='image/gallary_4.jpg') }}">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+             
+            </div>
+
+            <div class="gallary_image">
+                <img src="{{ url_for ('static', filename='image/gallary_5.jpg') }}">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+               
+            </div>
+
+            <div class="gallary_image">
+                <img src="{{ url_for ('static', filename='image/gallary_6.jpg') }}">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+             
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!--Review-->
+
+    <div class="review" id="Review">
+        <h1>Customer<span>Review</span></h1>
+
+        <div class="review_box">
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="image/review_1.png">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Falah</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus quam facere 
+                        blanditiis in fugiat tempore necessitatibus aliquid. Id adipisci, rem corrupti 
+                        asperiores distinctio delectus quae quia tenetur totam laboriosam quam. Lorem ipsum, 
+                        dolor sit amet consectetur adipisicing elit. Dolores soluta ullam ipsa voluptates 
+                        repudiandae dignissimos deleniti mollitia eum. Laudantium placeat velit nemo illo 
+                        pariatur. Fuga aperiam impedit illo atque repellendus!
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="image/review_2.png">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Roy</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus quam facere 
+                        blanditiis in fugiat tempore necessitatibus aliquid. Id adipisci, rem corrupti 
+                        asperiores distinctio delectus quae quia tenetur totam laboriosam quam. Lorem ipsum, 
+                        dolor sit amet consectetur adipisicing elit. Dolores soluta ullam ipsa voluptates 
+                        repudiandae dignissimos deleniti mollitia eum. Laudantium placeat velit nemo illo 
+                        pariatur. Fuga aperiam impedit illo atque repellendus!
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="image/review_3.png">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Ara</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus quam facere 
+                        blanditiis in fugiat tempore necessitatibus aliquid. Id adipisci, rem corrupti 
+                        asperiores distinctio delectus quae quia tenetur totam laboriosam quam. Lorem ipsum, 
+                        dolor sit amet consectetur adipisicing elit. Dolores soluta ullam ipsa voluptates 
+                        repudiandae dignissimos deleniti mollitia eum. Laudantium placeat velit nemo illo 
+                        pariatur. Fuga aperiam impedit illo atque repellendus!
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="image/review_4.png">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Bijong</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus quam facere 
+                        blanditiis in fugiat tempore necessitatibus aliquid. Id adipisci, rem corrupti 
+                        asperiores distinctio delectus quae quia tenetur totam laboriosam quam. Lorem ipsum, 
+                        dolor sit amet consectetur adipisicing elit. Dolores soluta ullam ipsa voluptates 
+                        repudiandae dignissimos deleniti mollitia eum. Laudantium placeat velit nemo illo 
+                        pariatur. Fuga aperiam impedit illo atque repellendus!
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!--Team-->
+
+    <div class="team">
+        <h1>Our<span>Team</span></h1>
+
+        <div class="team_box">
+            <div class="profile">
+                <img src="image/chef1.png">
+
+                <div class="info">
+                    <h2 class="name">Raihan</h2>
+                    <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                    <div class="team_icon">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="profile">
+                <img src="image/chef2.png">
+
+                <div class="info">
+                    <h2 class="name">Farhan</h2>
+                    <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                    <div class="team_icon">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="profile">
+                <img src="image/chef3.jpg">
+
+                <div class="info">
+                    <h2 class="name">Hilmi</h2>
+                    <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                    <div class="team_icon">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="profile">
+                <img src="image/chef4.jpg">
+
+                <div class="info">
+                    <h2 class="name">Raffi</h2>
+                    <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                    <div class="team_icon">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="team_box">
+                <div class="profile">
+                    <img src="image/chef1.png">
+    
+                    <div class="info">
+                        <h2 class="name">Sabrina</h2>
+                        <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    
+                        <div class="team_icon">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+    
+                    </div>
+    
+                </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!--Footer-->
+
+    <footer>
+        <div class="footer_main">
+
+            <div class="footer_tag">
+                <h2>Location</h2>
+                <p>Serang</p>
+                <p>Serpong</p>
+                <p>Bekasi</p>
+                <p>Jakarta</p>
+                <p>Tangerang</p>
+            </div>
+
+            <div class="footer_tag">
+                <h2>Quick Link</h2>
+                <p>Home</p>
+                <p>About</p>
+                <p>Menu</p>
+                <p>Gallary</p>
+                <p>Order</p>
+            </div>
+
+            <div class="footer_tag">
+                <h2>Contact</h2>
+                <p>+94 12 3456 789</p>
+                <p>+94 25 5568456</p>
+                <p>raihanmalay14@gmail.com</p>
+                <p>raihanmalay14@gmail.com</p>
+            </div>
+
+            <div class="footer_tag">
+                <h2>Our Service</h2>
+                <p>Fast Delivery</p>
+                <p>Easy Payments</p>
+                <p>24 x 7 Service</p>
+            </div>
+
+            <div class="footer_tag">
+                <h2>Follows</h2>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+
+        </div>
+
+        <p class="end">Design by<span><i class="fa-solid fa-face-grin"></i> WT Master Code</span></p>
+
+    </footer>
+
+</body></html>
