@@ -8,7 +8,7 @@ from main import logout
 from flask import Flask, request, render_template, session
 from flask_bootstrap import Bootstrap
 
-app = Flask(__name__, template_folder='view', static_folder='static')
+app = Flask(__name__, template_folder='dosc', static_folder='static')
 app.config['SECRET_KEY'] = '087hvfbvbofh894g4r'
 Bootstrap(app)
 
