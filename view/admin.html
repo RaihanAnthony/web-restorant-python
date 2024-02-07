@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body {
+            background-color: rgba(169, 169, 169, 0.353);
+        }
+        .navbar {
+            background-color: #fff;
+            font-family: sans-serif;
+            position: fixed;
+            font-weight: bold;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .container-main {
+            display: flex;
+        }
+        
+        .container-left {
+            padding: 15px 20px;
+            height: 93.3vh;
+            background-color: #fac031;
+            justify-content: center;
+            position: fixed;
+            top: 50px;
+            z-index: 1;
+        }
+
+        .container-left button {
+            border: none;
+            font-family: sans-serif;
+            font-size: 18.5px;
+            margin: 12px;
+            margin-top: 15px;
+            background-color: transparent;
+            color: inherit; /* Menyesuaikan warna teks dengan warna default */
+            font-size: inherit; /* Menyesuaikan ukuran font dengan ukuran default */
+            cursor: pointer; /* Menyesuaikan cursor dengan tipe default */
+        }
+
+        .container-left button:hover {
+            font-weight: bold;
+        }
+
+        .navigasi-options {
+           display: block;
+           margin-top: 15px;
+           padding: 0 35px;
+        }
+         
+        a {
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 17.5px;
+            border: 2px 0;
+            border-color: whitesmoke;
+            color:black;
+        }
+        
+        /* a:hover {
+            font-weight: bold;
+        } */
+
+        .container-right {
+            flex: 1;
+            margin: 12px 18px;
+            margin-left: 260px;
+            margin-top: 100px;
+        } 
+
+        .card-container {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .card {
+            flex: 1;
+            height: 200px;
+            margin: 20px 20px;
+        }
+
+        .card-link {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-penjualan {
+            display: flex;
+            flex-direction: column;
+            min-width: 1200px;
+            margin: 40px 60px;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 8px 20px;
+            margin-left: 260px;
+            margin-top: 100px;
+        }
+
+        /* #pesananContent {
+            display: none;
+        } */
+
+        #pejualanContent {
+            display: flex;
+        }
+
+        .penjualan {
+            height: 100%;
+            margin: 20px 20px;
+            background-color: #fff;
+            border-radius: 7.5px;
+            padding: 12px 12px;
+            width: 100%;
+        }
+
+        .table {
+            width: 100%;
+            border-radius: 1px solid grey;
+            border-radius: 5px;
+        }
+
+        #btnPenjualan {
+            color: white;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 ms-5 h1">Meet Guy Brother</span>
+        </div>
+      </nav>
+
+      <div class="container-main">
+        <div class="container-left">
+            <!-- <button class="navigasi-options" id="btnPesanan">Pesanan</button> -->
+            <button class="navigasi-options" id="btnPenjualan">Penjualan</button>
+        </div>
+
+        <!-- <div class="container-right" id="pesananContent">
+            <div class="card-container">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Dine In</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Order</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Check</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Take Away</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Order</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Check</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Delivered</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Order</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Check</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    
+
+        <div class="container-penjualan"  id="pejualanContent">
+            <h2>Penjualan</h2>
+            <p>Manajemen Penjualan</p>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Waktu</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Pembelian</th>
+                    <th scope="col">Harga Pembelian</th>
+                    <th scope="col">jumlah Pembelian</th>
+                    <th scope="col">Total Harga Pembelian</th>
+                    <th scope="col">Opsi Pembelian</th>
+                    <th scope="col">Biaya Layanan</th>
+                    <th scope="col">Ongkos Kirim</th>
+                    <th scope="col">Metode Pembayaran</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% set items_length = items[0]|length %}
+                {% for i in range(items_length) %}
+                    <tr>
+                        <th scope="row">{{ i+1 }}</th>
+                        <td>{{ items[5][i] }}</td>
+                        <td>{{ items[0][i] }}</td>
+                        <td>{{ items[1][i] }}</td>
+                        <td>{{ items[2][i] }}</td>
+                        <td>{{ items[3][i] }}</td>
+                        <td>{{ items[4][i] }}</td>
+                        <td>{{ items[6][i] }}</td>
+                        <td>{{ items[7][i] }}</td>
+                        <td>{{ items[8][i] }}</td>
+                        <td>{{ items[9][i] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+        </div>
+    </div>    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        // document.getElementById('btnPesanan').addEventListener('click', function () {
+        //     document.getElementById('pesananContent').style.display = 'flex';
+        //     document.getElementById('pejualanContent').style.display = 'none';
+        // });
+        // document.getElementById('btnPenjualan').addEventListener('click', function () {
+        //     document.getElementById('pesananContent').style.display = 'none';
+        //     document.getElementById('pejualanContent').style.display = 'block';
+        // });
+    </script>
+</body>
+</html>

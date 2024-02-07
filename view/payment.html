@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment method</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: rgba(245, 245, 245, 0.557)
+        }
+
+        .container-head {
+            width: 100%;
+            color: white;
+            height: 15vh;
+            opacity: 0.9;
+        }
+
+        .container-upper-head {
+            height: 3.5vh;
+            background-color: #fac031;
+        }
+
+        .container-lower-head {
+            display: flex;
+            background-color: white;
+            color: #fac031;
+            height: 11vh;
+            border-bottom: 0.05px solid rgba(0, 0, 0, 0.105);
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .container-lower-head-fill {
+            display: flex;
+            margin: auto 0;
+            margin-left: 100px;
+        }
+
+        .container-lower-head-fill p {
+            font-size: 30px;
+        }
+
+    
+        .container-main-1 {
+            position: relative;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            background-color: white;
+            margin: 0 auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 150vh;
+            min-height: 30vh;
+            border: 0.05px solid rgba(0, 0, 0, 0.105);
+            border-bottom: none;
+        }
+
+        .listProduct {
+            margin: 50px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .left-product {
+            font-size: 18px;
+            margin-left: 25px;
+        }
+
+        .middle-product{
+            display: flex;
+            margin-left: 80px;
+        }
+
+        .middle-product .m2 {
+            margin-left: 110px;
+        }
+
+        .right-product {
+            position: relative;
+            right: 26.5px;
+            margin-left: 80px;
+        }
+
+        .left-product-py {
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .left-product-py {
+            display: flex;
+        }
+
+        .left-product-buttom-py {
+            position: relative;
+            right: 60px;
+        }
+        
+        .left-product-buttom-py {
+            align-items: flex-start;
+        }
+
+        .left-product-up-py {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left-product-up-py img{
+            position: relative;
+            left: 45px;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border: 2px solid #fac031;
+            padding: 7.5px 5px;
+            align-items: center;
+            bottom: 15px;
+        } 
+
+        .middle-product-py {
+            display: flex;
+            margin-left: 100px;
+        }
+
+        .middle-product-py .m1-py {
+            position: relative;
+            right: 40px;
+            text-align: start;
+        }
+        
+        .middle-product-py .m2-py {
+            margin-left: 100px;
+            padding-left: 50px;
+            margin-right: 60px; 
+            position: relative;
+            right: 40px;
+            text-align: start;
+        }
+
+        .right-product-py {
+            position: relative;
+            right: 45px;
+            text-align: end;
+            margin-left: 100px;
+        }
+
+        .bottom-listproduct {   
+            width: 100%; 
+        }
+
+        .bottom-listproduct-child {
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border-top: 0.05px solid rgba(0, 0, 0, 0.105);
+        }
+
+        .listProduct p {
+            text-align: left;
+        }
+
+        .container-main-2 {
+            position: relative;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            background-color: white;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 150vh;
+            height: 10vh;
+            border: 0.05px solid rgba(0, 0, 0, 0.105);
+            border-bottom: none;
+        }
+
+        .container-main-2-child {
+            display: flex;
+            margin: 4vh 97.5px 4vh 97.5px;
+            justify-content: space-between;
+        }
+
+        .container-main-2-child .left {
+            font-size: 18px;
+        }
+
+        .container-main-2-child .right {
+            display: flex;
+            font-size: 18px;
+            color: #fac031;
+        }
+        
+        .container-payment-method {
+            background-color: white;
+            width: 150vh;
+            min-height: 50vh;
+            border: 0.05px solid rgba(0, 0, 0, 0.105);
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .head-container {
+            width: 100%;
+            height: 10vh;
+            border-bottom: 0.05px solid rgba(0, 0, 0, 0.105);
+        }
+
+        .head-container-child {
+            display: flex;
+            margin: 50px 97.5px 50px 97.5px;
+        }
+
+        .head-container-left {
+            display: flex;
+            font-size: 20px;
+        }
+
+        .head-container .garis-lurus {
+            margin-left: 65px;
+        }
+
+        .head-container-right {
+            display: flex;
+            margin-left: 65px;
+        }
+
+        .container-method {
+            margin: 0 80px 10px 0;
+        }
+        .container-method button{
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.674);
+            border: 0.05px solid rgba(0, 0, 0, 0.674);
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            padding: 8.5px;
+            background-color: transparent;
+        }
+
+
+
+
+
+        .middle-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 97.5px 15px 97.5px;
+            min-height: 15px;
+        }
+
+        .middle-container-child-tf {
+            display: none;
+            flex-direction: column;
+        }
+
+        .middle-container-child-tf button {
+            background-color: transparent;
+            border: none;
+            text-align: start;
+            margin: 40px 0;
+        }
+
+        .middle-container-child-tf img {
+            position: relative;
+            top: 15px;
+            width: 50px;
+            height: 50px;
+            margin: 0 15px 0 20px;
+        }
+
+        .middle-container-child-EW {
+            display: none;
+            flex-direction: column;
+        }
+
+        .middle-container-child-EW button{
+            background-color: transparent;
+            border: none;
+            text-align: start;
+            margin: 40px 0;
+        }
+
+        .middle-container-child-EW img{
+            position: relative;
+            top:  15px;
+            width: 60px;
+            height: 60px;
+            margin: 0 15px 0 20px;
+        }
+
+
+
+
+
+        .bottom-container {
+            background-color: rgba(245, 245, 245, 0.936);
+            margin-bottom: 20px;
+        }
+
+        .bottom-container-child {
+            display: flex;
+            flex-direction: column;
+            margin: 25px 97.5px 25px 97.5px;
+        }
+
+        .bottom-container-fill {
+            margin: 20px 0;
+            display: flex;
+            text-align: end;
+            justify-content: space-between;
+        }
+
+        .tranquality {
+            position: relative;
+            left: 70vh;
+        }
+
+        .bottom-container-fill-end {
+            margin: 25px 0 20px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bottom-container-fill-end .amount {
+            position: relative;
+            bottom: 10px;
+            font-size: 25px;
+            color:  #fac031;
+        }
+
+
+
+
+        
+        .container-pay {
+            margin: 0 97.5px 25px 97.5px;
+        }
+
+        .pay-button {  
+            display: flex;
+            justify-content: end;
+        }
+        
+        .pay-button button {
+            color: white;
+            display: flex;
+            text-align: end;
+            font-size: 18px;
+            padding: 8px 42px;
+            background-color: #fac031;
+            border-radius: 2.5px;
+            border: none;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container-head">
+        <div class="container-upper-head">
+        </div>
+        <div class="container-lower-head">
+            <div class="container-lower-head-fill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                  </svg>
+                  <p style="margin-left: 15px;">|</p>
+                  <p style="font-family: Futura, Arial, sans-serif; margin-left: 15px;">Checkout</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-main-1">
+        <div class="listProduct">
+            <div class="left-product">
+                <p>Produk Dipesan</p>
+            </div>
+            <div class="middle-product">
+                <div class="m1">
+                    <p style="opacity: 0.5;">Harga Satuan</p>
+                </div>
+                <div class="m2">
+                    <p style="opacity: 0.5;">Jumlah</p>
+                </div>
+            </div>
+            <div class="right-product">
+                <p style="opacity: 0.5;">Subtotal Produk</p>
+            </div> 
+        </div>
+        <div class="listCard-to-py">
+            {% for key, value in dataPesanan.items() %}
+            <div class="listProduct">
+                <div class="left-product-up-py">
+                    <img src="{{ url_for('static', filename='image/' + value.img) }}" alt="{{value.img}}">
+                </div>  
+                <div class="left-product-buttom-py">
+                    <p>{{value.name}}</p>
+                </div> 
+               <div class="middle-product-py">
+                   <div class="m1-py">
+                       <p">{{value.price}}</p>
+                   </div>
+                   <div class="m2-py">
+                       <p">{{value.quantity}}</p>
+                   </div>
+               </div>
+               <div class="right-product-py">
+                   <p">{{value.totalPerItem}}</p>
+               </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+
+        <div class="bottom-listproduct">
+            <div class="bottom-listproduct-child">
+                <div class="left" style="margin-left: 75px; opacity: 0.5;">
+                    <p>Total Pesanan</p>
+                </div>
+                <div class="right" style="margin-right: 75px;">
+                    <p>{{ dataPemesan['total pesanan'] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-main-2">
+        <div class="container-main-2-child">
+            <div class="left">
+                <p>Status</p>
+            </div>
+            <div class="right">
+                <div class="icons" style="margin-right: 10px;">
+                    {% if dataPemesan['opsi pembelian'] == 'Delivered' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                            <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+                        </svg> 
+                    {% elif dataPemesan['opsi pembelian'] == "Take Away" %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                            </svg> 
+                    {% elif dataPemesan['opsi pembelian'] == 'Dine In' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cup-straw" viewBox="0 0 16 16">
+                            <path d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82 0 .046-.004.09-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87-1.516 0-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A.78.78 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278zM9.768 4.607A13.991 13.991 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.284 3.284 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a5.514 5.514 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69 1.27 0 2.081-.441 2.438-.69.042-.029.09-.094.102-.215l.852-8.03a5.517 5.517 0 0 1-.435.127 8.88 8.88 0 0 1-.89.17zM4.467 4.884s.003.002.005.006zm7.066 0-.005.006c.002-.004.005-.006.005-.006M11.354 5a3.174 3.174 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222"/>
+                        </svg>
+                    {% endif %}
+                </div>
+                <p>{{ dataPemesan['opsi pembelian'] }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-payment-method">
+        <div class="head-container">
+            <div class="head-container-child">
+                <div class="head-container-left">
+                <p>Metode Pembayaran</p>
+                <p class="garis-lurus">|</p>
+            </div>
+            <div class="head-container-right">
+                <div class="container-method">
+                    <button onclick="methodPayment('COD')" id="cod">COD</button>
+                </div>
+                <div class="container-method" id="cash">
+                    <button onclick="methodPayment('CASH')" id="cash">Cash</button>
+                </div>
+                <div class="container-method" id="tf">
+                    <button onclick="methodPayment('TF')" id="tf">Tranfer Bank</button>
+                </div>
+                <div class="container-method" id="ew">
+                    <button onclick="methodPayment('Ewallet')" id="ew">E-Wallet</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="middle-container">
+            <div class="middle-container-child-tf">
+                <button><input type="radio" value="Bank BCA"><img src="{{ url_for('static', filename='image/bca.png' ) }}" alt="BCA">Bank BCA</button>
+                <button><input type="radio" value="Bank Mandiri"><img src="{{ url_for('static', filename='image/mandiri.png') }}" alt="Mandiri">Bank Mandiri</button>
+                <button><input type="radio" value="Bank BNI"><img src="{{ url_for('static', filename='image/bni.png') }}" alt="BNI">Bank BNI</button>
+                <button><input type="radio" value="Bank BRI"><img src="{{ url_for('static', filename='image/bri.jpg') }}" alt="BRI">Bank BRI</input></button>
+            </div>
+            <div class="middle-container-child-EW">
+                <button><input type="radio" value="DANA"><img src="{{ url_for('static', filename='image/dana.png') }}" alt="DANA">DANA</button>
+                <button><input type="radio" value="OVO"><img src="{{ url_for('static', filename='image/ovo.jpg') }}" alt="OVO">OVO</button>
+                <button><input type="radio" value="GoPay"><img src="{{ url_for('static', filename='image/gopay.png') }}" alt="GoPay">GoPay</button>
+                <button><input type="radio" value="LinkAja"><img src="{{ url_for('static', filename='image/linkaja.png') }}" alt="LinkAja">LinkAja</button>
+            </div>
+        </div>  
+
+        <!-- subtotal product -->
+        <div class="bottom-container">
+        </div>
+
+        <!-- tombol bayar -->
+        <div class="container-pay">
+            <div class="pay-button">
+                <button onclick="sendToServer()">Bayar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        product = document.querySelector('.listCard-to-js');
+        listPemesan = JSON.parse('{{ dataPemesan | tojson | safe }}');
+        listPesanan = JSON.parse('{{ dataPesanan | tojson | safe }}');
+        var payment;
+        var pesanan = listPesanan;
+        var pemesanan = listPemesan;
+        pemesanan['biaya layanan'] = "2000";
+        if (pemesanan['opsi pembelian'] == "Delivered") {
+            pemesanan['ongkos kirim'] = "15000";
+            pemesanan['total pesanan'] = String(parseInt(pemesanan['total pesanan']) + parseInt(pemesanan['ongkos kirim']) + parseInt(pemesanan['biaya layanan']));
+        } else {
+            pemesanan['total pesanan'] = String(parseInt(pemesanan['total pesanan']) + parseInt(pemesanan['biaya layanan']));
+        };
+        
+        listPayment = {pemesanan, pesanan};
+
+        // window.addEventListener('load', function() {
+        //     reloadProduct();
+        // });
+
+    
+       
+        // payment mathod be a disable in cod if not delivered
+        document.addEventListener('DOMContentLoaded', function() {
+            var container_cod = document.getElementById('cod');
+
+            if (pemesanan['opsi pembelian'] != 'Delivered') {
+            
+                container_cod.style.pointerEvents = "none";
+                container_cod.style.cursor = "not-allowed";
+                container_cod.style.opacity = "0.5";
+            };
+        }); 
+
+        
+
+        // payment
+        function methodPayment(method) {
+            buttonCOD = document.getElementById('cod');
+            buttonCash = document.getElementById('cash');
+            buttonTf = document.getElementById('tf');
+            buttonEw = document.getElementById('ew');
+
+            bank = document.querySelector('.middle-container-child-tf'); 
+            Ew = document.querySelector('.middle-container-child-EW');
+
+            buttonBank = document.querySelectorAll('.middle-container-child-tf button');
+            buttonEW = document.querySelectorAll('.middle-container-child-EW button');
+
+            inputRadioButtonBank = document.querySelectorAll('.middle-container-child-tf input[type="radio"]');
+            inputRadioButtonEW = document.querySelectorAll('.middle-container-child-EW input[type="radio"]');
+
+            // unceck all option radio button bank and ewallet
+            function closeAllRadioButton() { 
+                inputRadioButtonBank.forEach(function (radio) {
+                    radio.checked = false;
+                });
+                inputRadioButtonEW.forEach(function(radio) {
+                    radio.checked = false;
+                }); 
+            };
+
+            // default background none
+            if (method == "TF") {
+                buttonTf.style.backgroundColor = ' #fac031';
+                buttonEw.style.backgroundColor = '';
+                buttonCOD.style.backgroundColor = '';
+                buttonCash.style.backgroundColor = '';
+                bank.style.display = "flex";
+                Ew.style.display = 'none';
+                closeAllRadioButton();
+                // ketika tf di click maka dia akan mengosongkan paymet di listpayment
+                listPayment['payment'] = "";
+                paymentMethodButton(buttonBank, inputRadioButtonBank, inputRadioButtonEW);
+            } else if (method == "Ewallet") {
+                buttonEw.style.backgroundColor = ' #fac031';
+                buttonTf.style.backgroundColor = '';
+                buttonCOD.style.backgroundColor = '';
+                buttonCash.style.backgroundColor = '';
+                Ew.style.display = "flex";
+                bank.style.display = 'none';
+                closeAllRadioButton();
+                // ketika Ewallet di click maka listpayment['payment'] akan di kosongkan
+                listPayment['payment'] = "";
+                paymentMethodButton(buttonEW, inputRadioButtonEW, inputRadioButtonBank);
+            } else if (method == "COD") {
+                buttonCOD.style.backgroundColor = ' #fac031';
+                buttonEw.style.backgroundColor = '';
+                buttonTf.style.backgroundColor = '';
+                buttonCash.style.backgroundColor = '';
+                bank.style.display = 'none';
+                Ew.style.display = 'none';
+                payment = 'COD';
+                listPayment.payment = payment;
+                closeAllRadioButton();
+            } else if (method == "CASH") {
+                buttonCash.style.backgroundColor = ' #fac031';
+                buttonEw.style.backgroundColor = '';
+                buttonCOD.style.backgroundColor = '';
+                buttonTf.style.backgroundColor = '';
+                bank.style.display = 'none';
+                Ew.style.display = 'none';
+                payment = 'Cash';
+                listPayment.payment = payment;
+                closeAllRadioButton();
+            };
+
+            console.log(listPayment);
+        };
+
+
+
+        // payment option bank and ewallet
+        function paymentMethodButton(optionPaymentButton, inputRadioButton, closeRadioButton) {
+            optionPaymentButton.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    // Uncheck all radio buttons
+                    inputRadioButton.forEach(function (radio) {
+                        radio.checked = false;
+                    });
+
+        
+                    closeRadioButton.forEach(function(radio) {
+                        radio.checked = false;
+                    });
+
+                    // Check the associated radio button
+                    var associatedRadio = button.querySelector('input[type="radio"]');
+                    associatedRadio.checked = true;
+
+                    var valueRadio =  associatedRadio.value;
+                    payment = valueRadio;
+                    listPayment.payment = payment;
+                    console.log(listPayment);
+                });
+            });
+        };
+
+        // sub totol 
+        subtotal = document.querySelector('.bottom-container');
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = `
+        <div class="bottom-container-child">
+            <div class="bottom-container-fill">
+                <p class="tranquality">Subtotal untuk Produk</P>
+                <p>Rp{{ dataPemesan['total pesanan'] }}
+            </div>
+            {% if dataPemesan['opsi pembelian'] == "Delivered" %}
+                <div class="bottom-container-fill">
+                    <p class="tranquality">Total Ongkos Kirim</P>
+                    <p>Rp${ pemesanan['ongkos kirim'] }</p>
+                </div>
+            {% endif %}
+            <div class="bottom-container-fill">
+                <p class="tranquality">Biaya Layanan</p>
+                <p>Rp${ pemesanan['biaya layanan'] }</p>
+            </div>
+            <div class="bottom-container-fill-end">
+                <p class="tranquality">Total Pembayaran</p>
+                <p class="amount">Rp${ pemesanan['total pesanan'] }</p>
+            </div>
+        </div>`
+
+        subtotal.appendChild(newDiv);
+
+
+
+
+        // Send To Server
+        function sendToServer() {
+            const url = '/pesan/addandbuy/paymentmethod'
+
+            if (listPayment.payment == "") {
+                console.log("payment method should to choice!!!")
+            } else {
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(listPayment),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    console.log('berhasil:', result);
+
+                    // redirect ke halaman payment methods
+                    window.location.href = '/pesan/addandbuy';
+                })
+                .catch(error => {
+                    console.error('Error: ', error)
+                });
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

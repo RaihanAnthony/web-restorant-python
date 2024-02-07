@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body {
+            background: #fac031;
+            font-family: "Montserrat", sans-serif;
+            font-size: 10px;
+            height: 90vh;
+            margin: 20px 0 50px;
+            padding: 10px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .card-container {
+            display: flex;
+            border-radius: 10px;
+            width: 300px;
+            height: 360px;
+            background-color: #fff;
+            justify-content: center;
+            text-align: center;
+        }
+
+        input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 30px 0;
+            width: 100%;
+            font-size: 0.8rem; 
+        }
+
+        input:focus {
+            outline: 1px solid #fac031;
+        }
+
+        button {
+            border-radius: 20px;
+            margin-top: 10px;
+            border: 1px solid #fac031;
+            background-color: #fac031;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-out;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+
+        .input-block {
+            display: block;
+        }
+
+        .dont-have-account {
+            display: block;
+            margin-top: 15px;
+        }
+
+        a {
+            font-size: 10px;
+            text-decoration: none;
+            color: #fac031;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .head-login {
+            margin-top: 40px;
+        }
+
+        .alert {
+            margin: 20px 100px;
+            width: 600px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
+            opacity: 0.2;
+            border: 1.25px solid #fff;
+            border-radius: 5px;
+            color: white;
+            font-size: 15px;
+            padding: 10px 10px;
+            font-weight: normal;
+            position: relative;
+            display: block;
+            justify-content: start;
+            align-items: normal;
+            margin-bottom: 180px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    {% if message %}
+        <div id="alert-message"  class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% elif messageEmail %}
+        <div id="alert-message"  class="alert alert-danger" role="alert">
+            {{ messageEmail }}
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="card-container">
+            <form action="/login" method="post">
+                <h2 class="head-login">Login</h2>
+                <input class="input-block" type="email" name="email" placeholder="Email">
+                <input class="input-block" type="password" name="password" placeholder="password">
+                <button>Login</button>
+                <div class="dont-have-account">
+                    <p>Dont have Account? <a href="/signup">Create an Account</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        setTimeout(function() {
+            var alertMessage = document.getElementById('alert-message');
+            if (alertMessage) {
+            alertMessage.style.display = 'none';
+            }
+        }, 2000); 
+    </script>
+</body>
+</html>

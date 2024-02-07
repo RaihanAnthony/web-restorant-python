@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+     * {
+        margin: 0;
+        padding: 0;
+     }
+     .container-main {
+        background-color: rgba(169, 169, 169, 0.353);  
+        margin: 0 10vh;
+        min-height: 100vh;
+     }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container-main">
+        <div class="head-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Pesanan</th>
+                      <th scope="col">Jumlah Pesanan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% set items_length = item|length %}
+                {% for i in range(items_length) %}
+                    <tr>
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{item[i][0]}}</td>
+                      <td>{{item[i][1][i]}}</td>
+                      <td>{{item[i][2][i]}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

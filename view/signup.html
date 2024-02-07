@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            background: #fac031;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Montserrat", sans-serif;
+            font-size: 10px;
+            height: 100vh;
+            margin: 20px 0 50px;
+            padding: 10px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 20px rgb(0, 0, 0, 0.25), 0 10px 10px rgb(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-width: 522px;
+            min-width: 370px;
+        }
+
+        .card-container {
+            display: flex;
+        }
+
+        .left {
+            flex: 1;
+            height: 480px;
+            background-color: #fac031;
+        }
+
+        .right {
+            display: flex;
+            flex: 1;
+            height: 460px;
+            background-color: #fff;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left {
+            display: flex;
+            flex: 1;
+            height: 544px;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .left-container {
+            height:  50%;
+            width: 80%;
+            text-align: start;
+            line-height: 22px;
+        }
+
+        .left p {
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            padding-bottom: -40px;
+        }
+
+        .right-container {
+            width:  70%;
+            height:  80%;
+            text-align: center;
+            margin-top: -40px;
+        }
+
+        input, 
+        textarea {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            margin-top: 15px;
+            width: 100%;
+            font-size: 0.8rem; 
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 1px solid #fac031;
+        }
+
+        button {
+            border-radius: 20px;
+            border: 1px solid #fac031;
+            background-color: #fac031;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-out;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+
+        textarea {
+            height: 90px;
+        }
+
+        .p1 {
+            font-weight: bold;
+        }
+
+        .h2-right {
+            margin-bottom: 35px;
+        }
+
+        .alert {
+            margin: 20px 75px;
+            width: 600px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
+            opacity: 0.2;
+            border: 1.25px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 15px;
+            padding: 10px 10px;
+            font-weight: normal;
+            position: relative;
+            display: block;
+            justify-content: start;
+            align-items: normal;
+            margin-bottom: 180px;
+        }
+
+        .button-login {
+            font-family: "Montserrat", sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .button-login a {
+            text-decoration: none;
+            color: rgba(15, 15, 244, 0.732);
+        }
+
+        .alert-success {
+            margin: 20px 75px;
+            width: 600px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(9, 174, 9, 0.895);
+            opacity: 0.2;
+            border: 1.25px solid rgba(9, 174, 9, 0.895);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 15px;
+            padding: 10px 10px;
+            font-weight: normal;
+            position: relative;
+            display: block;
+            justify-content: start;
+            align-items: normal;
+            margin-bottom: 180px;
+        }
+    </style>
+</head>
+<body>
+    {% if message %}
+    <div id="alert-message" class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+    {% elif duplikasi %}
+    <div id="alert-message" class="alert alert-danger" role="alert">
+        {{ duplikasi }}
+      </div>
+    {% elif succesfuly %}
+      <div id="alert-message" class="alert-success" role="alert">
+        {{ succesfuly }}
+      </div>
+    {% endif %}
+
+
+    <div class="container">
+        <div class="card-container">
+            <div class="left">
+                <div class="left-container">
+                    <h2>Welcome To Meet Guy Brother!</h2>
+                    <p>Meat Guy Brother adalah sebuah restorant yang menyediakan berbagai makanan dan minuman dengan harga yang murah</p>
+                    <br>
+                    <p class="p1">Catatan</p>
+                    <p>Isi data Dengan benar dan Alamat Rumah dengan detail</p>
+                    <br>
+                    <p class="button-login">Already have Account? <a href="/login">Login</a></p>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right-container">
+                    <form action="/signup" method="post">
+                        <h2 class="h2-right">Sign Up</h2>
+                        <input type="text" name="nama" placeholder="Name">
+                        <input type="email" name="email" placeholder="Alamat Email">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="number" name="hp" placeholder="Handphone">
+                        <textarea placeholder="Alamat Rumah" name="alamat" rows="10"></textarea>
+                        <button>Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        setTimeout(function() {
+            var alertMessage = document.getElementById('alert-message');
+            if (alertMessage) {
+            alertMessage.style.display = 'none';
+            }
+        }, 2000); 
+    </script>
+</body>
+</html>

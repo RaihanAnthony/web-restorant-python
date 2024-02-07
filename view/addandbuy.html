@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUY</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu {
+            margin-top: -80px;
+        }
+
+        .menu h1 span {
+            margin-right: 50px;
+        }
+
+        #continer-left {
+            width: 75%;
+            margin-left: 50px;
+            height: 80vh;
+        }
+
+        .menu .menu_box{
+            width: 95%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 15px;
+        }
+        
+        .menu .menu_box .menu_card{
+            width: 240px;
+            height: 360px;
+            padding-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .menu .menu_box .menu_card .menu_image{
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .menu .menu_box .menu_card .menu_info .menu_btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            background: #000;
+            padding: 5px 12px;
+            margin: 0 40px;
+            transition: 0.3s;
+        }
+
+        .container-right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 25%;
+            background-color: #fac031;
+            height: 200vh;
+            transition: 0.5s;
+        }
+
+        .container-right h1 {
+            color: whitesmoke;
+            font-weight: 100;
+            margin: 0;
+            padding: 0 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container-right .checkOut {
+            position: sticky;
+            bottom: 0;
+            width: 365px;
+            margin-top: 80vh;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: #fac031;
+        }
+
+        .container-right .checkOut .left .right{
+            color: whitesmoke;
+            border-right: 20px;
+            height: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 5px solid #fac031;
+        }
+
+        
+        
+        .left {
+            background-color: tomato;
+            font-weight: bold;
+            cursor: pointer;
+            color: whitesmoke;
+            border: 0px;
+            text-align: center;
+            line-height: 8vh;
+            height: 8.65vh;
+        }
+
+        .right a{
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            color: whitesmoke;
+            cursor: pointer;
+            background-color: rgb(8, 227, 8);
+            border: 0px;
+            text-align: center;
+            line-height: 8vh;
+            height: 8.65vh;
+            transition: font-weight 0.2s ease, transform 0.2s ease;
+        }
+
+        .right a:hover{
+            font-weight: 500;
+            transform: scale(1.02);
+        }
+
+        .listCard li{
+            display: grid;
+            grid-template-columns: 200px repeat(3, 1fr);
+            color: #fff;
+            row-gap: 100px;
+            margin-left: 6px;
+        }
+        .listCard li div{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        .listCard li img{
+            width: 90%;
+        }
+        .listCard li button{
+            background-color: #fff5;
+            border: none;
+        }
+        .listCard .count{
+            margin: 0 10px;
+        }
+
+        .card-right {
+            display: flex;
+            justify-content: end;
+            margin-left: 25px;
+            align-items: end;
+        }
+        
+        .button {
+            background-color: none;
+            border-radius: none;
+        }
+
+        .container-popup-waybuy{
+            display: none;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0; left: 0;
+            background: rgb(0, 0, 0,.3);
+        }
+
+        .container-popup-waybuy .model{
+            height: 350px;
+            width: 350px;
+            margin: 0 10px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 7.5px;
+            text-align: center;
+            position: relative;
+            border: 2px solid;
+            border-color:#fac031;
+        }
+
+        .container-popup-waybuy .model .btn-close{
+            position: absolute;
+            top: 15px; right: 15px;
+            font-size: 15px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .button-popup {
+            margin: 50px 20px;
+        }
+
+        .button-popup1 {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-popup1 a{
+            margin-top: -5px;
+            background-color: #fac031;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 7.5px;
+            width: 220px;
+            transition: font-weight 0.2s ease, transform 0.2s ease;
+        }
+
+        .button-popup1 a:hover {
+            font-weight: 500;
+            transform: scale(1.2);
+        }
+
+    
+    </style>
+
+<body>
+        
+    <!--Menu-->
+    <div class="continer-left" id="continer-left">
+        <div class="menu" id="Menu">
+            <h1>Pesan<span>Makanan</span></h1>
+            <div class="menu_box">
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img id="menu_image" src="{{ url_for ('static', filename='image/0.png') }}" alt="image steak">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2 id="menuTitle">{{ data[0][0] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3 id="menuPrice">{{ data[1][0] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a class="menu_btn" onclick="addToCard(0, '{{data[0][0]}}', '{{data[1][0]}}', '0.png')">Order Now</a>
+                    </div>
+
+                </div> 
+                
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img id="menu_image" src="{{ url_for ('static', filename='image/1.jpg') }}" alt="image pasta">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][1]  }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][1]  }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(1, '{{data[0][1]}}', '{{data[1][1]}}', '1.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/2.png') }}" alt="image burger">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][2]  }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][2] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(2, '{{data[0][2]}}', '{{data[1][2]}}', '2.png')"  class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/3.jpg') }}" alt="image toast">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][3] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][3]  }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(3, '{{data[0][3]}}', '{{data[1][3]}}', '3.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/4.jpg') }}" alt="image lychee-tea">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][4]  }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][4] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(4, '{{data[0][4]}}', '{{data[1][4]}}', '4.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/5.jpg') }}" alt="image ice-caramel">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][5] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][5] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(5, '{{data[0][5]}}', '{{data[1][5]}}', '5.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/6.jpg') }}" alt="image green-tea">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][6] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][6] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(6, '{{data[0][6]}}', '{{data[1][6]}}', '6.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/7.jpg') }}" alt="image matcha-tea">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][7] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][7] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(7, '{{data[0][7]}}', '{{data[1][7]}}', '7.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/8.png') }}" alt="image pancake">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][8] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][8] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a  onclick="addToCard(8, '{{data[0][8]}}', '{{data[1][8]}}', '8.png')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/9.jpg') }}" alt="image choco-plan">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][9] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][9] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(9, '{{data[0][9]}}', '{{data[1][9]}}', '9.jpg')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/10.png') }}" alt="image apple-pie">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][10] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <h3>{{ data[1][10] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(10, '{{data[0][10]}}', '{{data[1][10]}}', '10.png')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+
+                <div class="menu_card">
+
+                    <div class="menu_image">
+                        <img src="{{ url_for ('static', filename='image/11.png') }}" alt="image cheesecake">
+                    </div>
+
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="menu_info">
+                        <h2>{{ data[0][11] }}</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                        <h3>{{ data[1][11] }}</h3>
+                        <div class="menu_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a onclick="addToCard(11, '{{data[0][11]}}', '{{data[1][11]}}', '11.png')" class="menu_btn">Order Now</a>
+                    </div>
+
+                </div> 
+        </div>
+        </div>            
+    </div>
+
+    <div class="container-right" id="container-right">
+        <h1>Cart</h1>
+        <ul class="listCard"></ul>
+        <div class="checkOut">
+            <div class="left">
+                <div class="total">0</div>
+            </div>
+            <div class="right">
+                <a onclick="togglePopup()" class="bayar">Bayar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- pop up product -->
+    <div id="" class="container-popup-waybuy">
+        <div class="model">
+            <div class="button-popup">
+                <div class="button-popup1">
+                    <a onclick="optionBuyying('Take Away')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                          </svg>
+                        <p>Take Away</p>
+                    </a>
+                </div>
+                <div class="button-popup1">
+                    <a onclick="optionBuyying('Dine In')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cup-straw" viewBox="0 0 16 16">
+                            <path d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82 0 .046-.004.09-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87-1.516 0-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A.78.78 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278zM9.768 4.607A13.991 13.991 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.284 3.284 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a5.514 5.514 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69 1.27 0 2.081-.441 2.438-.69.042-.029.09-.094.102-.215l.852-8.03a5.517 5.517 0 0 1-.435.127 8.88 8.88 0 0 1-.89.17zM4.467 4.884s.003.002.005.006zm7.066 0-.005.006c.002-.004.005-.006.005-.006M11.354 5a3.174 3.174 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222"/>
+                          </svg>
+                        <p>Dine In</p>
+                    </a>
+                </div>
+                <div class="button-popup1">
+                    <a onclick="optionBuyying('Delivered')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                            <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+                          </svg>
+                        <p>Delivered</p>
+                    </a>
+                </div>
+            </div>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        let orderCount = 0;
+        let listCards = {};
+        let listCard = document.querySelector('.listCard');
+        let total = document.querySelector('.total');
+
+        // Function to extract query parameter from URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the "id" from the URL
+        const idValue = getQueryParam('id');
+        console.log(listCards)
+        
+
+        function addToCard(key, nama, harga, image) {
+        // Ensure that key is a valid integer
+        console.log('debug key:', key)
+        
+            if (Number.isInteger(key) && key >= 0) {
+            if (listCards[key] == null) {
+                Konharga = parseInt(harga)
+                listCards[key] = { name: nama, price: Konharga, quantity: 1, totalPerItem: Konharga, img: image};
+                reloadCard()
+            } else {
+                // If the key is already in listCards, increment the quantity
+                listCards[key].quantity++;
+                listCards[key].totalPerItem = listCards[key].price * listCards[key].quantity;
+                reloadCard()
+            }
+            } else {
+                console.error('Invalid key for products array.');
+            }
+        } 
+
+
+        function reloadCard() {
+            listCard.innerHTML = '';
+            let count = 0;
+            let totalPrice = 0;
+
+            if (listCards && typeof listCards === 'object') {
+                for (const key in listCards) {
+                    if (listCards.hasOwnProperty(key)) {
+                        const value = listCards[key];
+
+                        // Check if value is defined and totalPerItem is a property of value
+                        if (value && typeof value === 'object' && 'totalPerItem' in value) {
+                            totalPrice += value.price * value.quantity;
+
+                            let newDiv = document.createElement('li');
+                            newDiv.innerHTML = `
+                                <div>${value.name}</div>
+                                <div>${value.totalPerItem.toLocaleString()}</div>
+                                <div class="card-right">
+                                    <button onclick="changeQuantity('${key}', ${value.quantity - 1})">-</button>
+                                    <div class="count">${value.quantity}</div>
+                                    <button onclick="changeQuantity('${key}', ${value.quantity + 1})">+</button>
+                                </div>`;
+                            listCard.appendChild(newDiv);
+                        } else {
+                            console.error(`Invalid value for key ${key}`);
+                        }
+                    }
+                }
+            } else {
+                console.error('listCards is not an object or is null/undefined.');
+            }
+
+            console.log(listCards);
+            listCards['total pesanan'] = totalPrice;
+            total.innerText = totalPrice.toLocaleString();
+        }
+
+
+        function changeQuantity(key, quantity) {
+            if (quantity == 0) {
+                delete listCards[key];
+            } else {
+                listCards[key].quantity = quantity;
+                listCards[key].totalPerItem = quantity * listCards[key].price;
+            }
+            reloadCard();
+        }
+
+
+        function sendToServer() {
+            const url = `/pesan/addandbuy`
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(listCards),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(result => {
+                console.log('berhasil:', result);
+
+                // redirect ke halaman payment methods
+                window.location.href = '/pesan/addandbuy/paymentmethod';
+            })
+            .catch(error => {
+                console.error('Error: ', error)
+            });
+        }
+
+        // button close container-popup-waybuy 
+        document.addEventListener("DOMContentLoaded", function () {
+            // Find the close button and the popup container
+            var closeButton = document.querySelector(".btn-close");
+            var popupContainer = document.querySelector(".container-popup-waybuy");
+
+            // Add click event listener to the close button
+            closeButton.addEventListener("click", function () {
+                // Toggle the visibility of the popup container
+                popupContainer.style.display = "none";
+            });
+        });
+
+        // notifacation popup way buyying while di klik bayar
+        function togglePopup() {
+            // Find the popup container
+            var popupContainer = document.querySelector(".container-popup-waybuy");
+
+            // Toggle the visibility of the popup container
+            if (JSON.stringify(listCards) ===  "{}" ) {
+                popupContainer.style.display = "none";
+            } else if (popupContainer.style.display === "none" || popupContainer.style.display === "") {
+                popupContainer.style.display = "flex";
+            } else {
+                popupContainer.style.display = "none";
+            }
+        }
+
+        // pop up opsi pembayaran
+        function optionBuyying(option) {
+            const value = option;
+            const options = 'opsi pembelian';
+
+            try {
+                if (value === "Take Away") {
+                    listCards[options] = value;
+                }else if (value === "Dine In") {
+                    listCards[options] = value;
+                } else if (value === "Delivered") {
+                    listCards[options] = value;
+                } else {
+                    throw new Error("errorr")
+                }
+            } catch (error) {
+                console.error(error.message);
+                // menghentikan program 
+                throw error;
+            }
+            
+            sendToServer()
+            console.log(listCards);
+        }
+    </script>
+</body>
+</html>
